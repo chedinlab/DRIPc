@@ -1,0 +1,27 @@
+Pipeline to call DRIP peaks with stochhmm
+
+1. ./normalize.pl input.wig normalized.wig
+2. ./wig2fa.pl -i normalized.wig -o normalized.customfa
+3. stochhmm -seq normalized.customfa -model DRIP.hmm -posterior -threshold 0.9 -gff > peaks.txt
+
+StochHMM source: https://github.com/KorfLab/StochHMM
+
+Warnings:
+
+- wig must be variableStep format. 
+- normalize.pl assumes span to be constant. 
+- modifying DRIP.hmm or the convert() subroutine of wig2fa.pl will result in negatively affected peak calling!
+
+Normalization:
+
+Process implemented in normalize.pl:
+- Linear median shift
+  - Round all values
+  - Throw away all values less than the third quartile.
+  - Find median of the remaining values.
+  - Divide DRIP median (10) that the model was trained on by the median of the input data to find the multiplication factor. 
+  - Multiply every value in the wig file by the factor.
+
+email to contact with any questions about pipeline, code, problems, etc: arrajpurkar@ucdavis.edu
+
+
