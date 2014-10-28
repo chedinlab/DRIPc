@@ -1,0 +1,30 @@
+Pipeline to call DRIPc peaks with stochhmm
+
+DRIPc.hmm is an optimized HMM file based off DRIP.hmm and further optimized to be DRIPc specific.
+
+1. ./normalize.pl NT2_DRIPc.wig NT2_DRIPc_normalized.wig
+2. ./wig2fa.pl -i NT2_DRIPc_normalized.wig -o NT2_DRIPc_normalized.customfa
+3. stochhmm -seq NT2_DRIPc_normalized.customfa -model DRIPc.hmm -posterior -threshold 0.9 -gff > peaks.txt
+
+StochHMM source: https://github.com/KorfLab/StochHMM
+
+Warnings:
+
+- wig must be variableStep format. 
+- normalize.pl assumes span to be constant. 
+- modifying DRIP.hmm or the convert() subroutine of wig2fa.pl will result in negatively affected peak calling!
+
+Normalization:
+
+Process implemented in normalize.pl:
+- Linear median shift
+  - Round all values
+  - Throw away all values less than the third quartile.
+  - Find median of the remaining values.
+  - Divide DRIP median (10) that the model was trained on by the median of the input data to find the multiplication factor. 
+  - Multiply every value in the wig file by the factor.
+- Other normalization methods may be used instead, but this has been working well so far. wig2fa.pl assigns emissions based on wig signal height at the location, and was originally constructed for DRIP.
+
+email to contact with any questions about pipeline, code, problems, etc: arrajpurkar@ucdavis.edu
+
+
