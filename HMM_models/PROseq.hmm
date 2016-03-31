@@ -1,0 +1,187 @@
+#STOCHHMM MODEL FILE
+MODEL INFORMATION
+======================================================
+MODEL_NAME:	PEAK CALLING PROSEQ
+MODEL_DESCRIPTION:	To call peaks on the PROseq dataset
+MODEL_CREATION_DATE:	January 6, 2016
+AUTHOR:	SANDRA & STELLA
+
+TRACK SYMBOL DEFINITIONS
+======================================================
+SCORE:  A,B,C,D,E,O,V,W,X,Y,Z
+
+STATE DEFINITIONS
+#############################################
+STATE:
+        NAME: INIT
+TRANSITION: STANDARD: P(X)
+	LOW_UP:	0.15
+	LOW_DOWN:	0.15
+	SUPERLOW:	0.15
+	LONGBREAK:	0.15
+	SHORTBREAK:	0.15
+	HIGH_UP:	0.15
+	HIGH_DOWN:	0.15
+#############################################
+STATE:
+        NAME:   LOW_UP
+        PATH_LABEL:     L
+        GFF_DESC:       LOW_UP
+TRANSITION:     STANDARD:       P(X)
+	LOW_UP:	0.995
+	LOW_DOWN:	0.005
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	13	1	1	1	1	1	1	1	1	
+1	10	870	5	13	1	1	1	1	1	6	
+1	1	5	1	1	1	1	1	1	1	1	
+1	1	14	1	1	1	1	1	1	1	1	
+1	1	1	1	1	8	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	8	1	1	
+1	3	3	1	1	1	1	8	461	1	12	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	18	1	1	
+#############################################
+STATE:
+        NAME:   LOW_DOWN
+        PATH_LABEL:     M
+        GFF_DESC:       LOW_DOWN
+TRANSITION:     STANDARD:       P(X)
+	LOW_DOWN:	0.995
+	SHORTBREAK:	0.0025
+	LONGBREAK:	0.0025
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1	
+1	1	9	1	1	1	1	1	1	1	1	
+1	1	14	1	1	1	1	1	1	1	1	
+6	12	1040	2	10	7	1	1	3	1	2	
+1	1	2	1	1	1	1	1	1	1	1	
+1	1	11	1	1	1	1	1	1	1	1	
+1	1	6	1	1	23	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	9	1	1	
+3	2	1	1	1	1	1	9	285	1	3	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	5	1	1	
+#############################################
+STATE:
+	NAME:	SUPERLOW
+	PATH_LABEL:	S
+	GFF_DESC:	SUPERLOW
+TRANSITION:	STANDARD:	P(X)
+	SUPERLOW:	0.95
+	SHORTBREAK:	0.025
+	LONGBREAK:	0.025
+	END:	1
+EMISSION:	SCORE	COUNTS
+	ORDER: 1
+2	1	1	2	1	26	1	1	1	1	1	
+1	2	1	1	1	11	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+4	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+23	11	1	2	1	83	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1
+#############################################
+STATE:
+        NAME:   HIGH_UP
+        PATH_LABEL:     H
+        GFF_DESC:	HIGH_UP
+TRANSITION:     STANDARD:       P(X)
+	HIGH_UP:	0.99
+	HIGH_DOWN:	0.01
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	41	1	1	
+1	1	1	1	1	1	1	41	1724	4	83	
+1	1	1	1	1	1	1	1	4	1	1	
+1	1	1	1	1	1	1	1	83	1	1	
+#############################################
+STATE:
+        NAME:   HIGH_DOWN
+        PATH_LABEL:     I
+        GFF_DESC:	HIGH_DOWN
+TRANSITION:     STANDARD:       P(X)
+	HIGH_DOWN:	0.99
+	SHORTBREAK:	0.0095
+	LONGBREAK:	0.0005
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	46	1	1	1	1	1	1	1	2	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	3	1	1	
+1	1	1	1	1	1	1	1	54	1	1	
+1	1	1	1	1	1	3	54	980	1	21	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	23	1	1	
+#############################################
+STATE:
+        NAME:   SHORTBREAK
+        PATH_LABEL:     A
+	GFF_DESC:	SHORTBREAK
+TRANSITION:     STANDARD:       P(X)
+	SHORTBREAK:	0.994
+	LOW_UP:	0.002
+	HIGH_UP:	0.002
+	SUPERLOW:	0.002
+	END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1	
+1	1	2	1	1	1	1	1	1	1	1	
+1	1	4	1	1	1	1	1	1	1	1	
+1	4	443	1	9	5	1	1	1	1	1	
+1	1	2	1	1	1	1	1	1	1	1	
+1	1	13	1	1	1	1	1	1	1	1	
+1	1	1	1	4	107	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	19	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	2	1	1	
+#############################################
+STATE:
+        NAME:	LONGBREAK
+        PATH_LABEL:     B
+	GFF_DESC:	LONGBREAK
+TRANSITION:     STANDARD:       P(X)
+	LONGBREAK:	0.99985
+	LOW_UP:	0.00005
+	HIGH_UP:	0.00005
+	SUPERLOW:	0.00005
+	END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	5088	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+1	1	1	1	1	1	1	1	1	1	1	
+#############################################
+//END

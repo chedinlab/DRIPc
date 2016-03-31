@@ -1,0 +1,181 @@
+#STOCHHMM MODEL FILE
+MODEL INFORMATION
+======================================================
+MODEL_NAME:	PEAK CALLING PROSEQ
+MODEL_DESCRIPTION:	To merge initial called peaks into broad peaks on the PROseq dataset
+MODEL_CREATION_DATE:	January 6, 2016
+AUTHOR:	SANDRA & STELLA
+
+TRACK SYMBOL DEFINITIONS
+======================================================
+SCORE:  N,L,H
+
+STATE DEFINITIONS
+#############################################
+STATE:
+        NAME: INIT
+TRANSITION: STANDARD: P(X)
+	HIGH	0.2
+	MEDIUM	0.2
+	SPARSE	0.2
+	BREAK	0.2
+#############################################
+STATE:
+        NAME:   HIGH
+        PATH_LABEL:     H
+        GFF_DESC:       HIGH
+TRANSITION:     STANDARD:       P(X)
+	HIGH:	0.999
+	MEDIUM:	0.0009
+	SPARSE:	0.0001
+	END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 3
+3217	69	1	
+1	69	1	
+1	1	1	
+1	1	1	
+1	69	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+69	1	1	
+1	1	1	
+1	1	1	
+69	1	1	
+69	17096	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1
+#############################################
+STATE:
+        NAME:	MEDIUM
+        PATH_LABEL:     M
+        GFF_DESC:       MEDIUM
+TRANSITION:     STANDARD:       P(X)
+	MEDIUM:	0.999
+	HIGH:	0.0004
+	SPARSE:	0.0004
+	BREAK:	0.0002
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 3	
+67767	636	1	
+1	636	1	
+1	1	1	
+1	1	1	
+1	637	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+636	1	1	
+1	1	1	
+1	1	1	
+636	1	1	
+637	35522	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1
+#############################################
+STATE:
+        NAME:   SPARSE
+        PATH_LABEL:     S
+        GFF_DESC:	SPARSE
+TRANSITION:     STANDARD:       P(X)
+	SPARSE:	0.999
+	HIGH:	0.0003
+	MEDIUM:	0.0003
+	BREAK:	0.0004
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 3
+42395	128	1	
+1	128	1	
+1	1	1	
+1	1	1	
+1	128	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+128	1	1	
+1	1	1	
+1	1	1	
+128	1	1	
+128	5990	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1
+#############################################
+STATE:
+        NAME:   BREAK
+        PATH_LABEL:     B
+TRANSITION:     STANDARD:       P(X)
+	HIGH:	0.0003
+	MEDIUM:	0.0003	
+	SPARSE:	0.0004
+	BREAK:	0.999
+        END:    1
+EMISSION:       SCORE   COUNTS
+        ORDER: 3
+81537	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1	
+1	1	1
+#############################################
+//END
