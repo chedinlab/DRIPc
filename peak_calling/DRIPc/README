@@ -25,6 +25,6 @@ Process implemented in normalize.pl:
   - Multiply every value in the wig file by the factor.
 - Other normalization methods may be used instead, but this has been working well so far. wig2fa.pl assigns emissions based on wig signal height at the location, and was originally constructed for DRIP.
 
-email to contact with any questions about pipeline, code, problems, etc: arrajpurkar@ucdavis.edu
+email to contact with any questions about pipeline, code, problems, etc: srhartono@ucdavis.edu
 
 
